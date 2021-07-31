@@ -4,11 +4,11 @@ import './HomeScreen.css';
 
 function HomeScreen() {
     return (
-        <div className="homeScreen">
-        {/* Nav */}
+        <div className=" homeScreen">
+     
         <Nav />
-
-        {/* Banner */}
+      
+       <Banner />
 
         {/* Row */}
     </div>
