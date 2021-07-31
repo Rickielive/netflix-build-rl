@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Nav.css';
 
 function Nav() {
+    const [show, handleShow] = useState(false);
+
+    const transitionNavBar = () => {
+        if (window.scrollY > 100) {
+            handleShow(true);
+        }else {
+            handleShow(false);
+        }
+        
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", transitionNavBar);
+        return () => 
+            window.removeEventListener("scroll", transitionNavBar);
+    }, []);
+
+
     return (
-        <div className= "nav">
-            div.nav__contents
+        <div className= {`nav ${show && "nav__black"}`}>
+            <div className="nav__contents">
             <img 
             className= "nav__logo"
-            src= "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmV0ZmxpeCUyMGxvZ298ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80" 
+            src= "https://pngpress.com/wp-content/uploads/2020/04/Netflix-logo.png" 
             alt=""
             />
 
@@ -18,7 +36,8 @@ function Nav() {
              alt=""
              /> 
 
-            <h1> This is the Wachira</h1>
+            </div>
+            
         </div>
     )
 }
