@@ -31,7 +31,7 @@
 .nav__avatar{
     cursor: pointer;
     position: fixed;
-    top: 10px;
+    top: 20px;
     right: 20px;
     width: 40px;
 }
