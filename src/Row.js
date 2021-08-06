@@ -26,16 +26,21 @@ function Row({ title, fetchUrl, isLargeRow }) {
       <div className="row__posters">
         {/* serveral row_poster(s) */}
 
-        {movies.map((movie) => (
-          <img
-            className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-            key={movie.id}
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
-          />
-        ))}
+        {movies.map(
+            (movie) => 
+            ((isLargeRow && movie.poster_path) || 
+            (!isLargeRow && movie.backdrop_path)) && (
+                <img
+                className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+                key={movie.id}
+                src={`${base_url}${
+                  isLargeRow ? movie.poster_path : movie.backdrop_path
+                }`}
+                alt={movie.name}
+              />
+            )
+         
+        )}
       </div>
 
       {/* container -> posters */}
@@ -46,6 +51,22 @@ function Row({ title, fetchUrl, isLargeRow }) {
 export default Row;
 
 
+
+// {movies.map((movie) => 
+//     (isLargeRow && movie.poster_path) || 
+//     (isLargeRow && movie.backdrop_path) && (
+//         <img
+//         className={`row__poster ${isLargeRow && "row__posterLarge"}`}
+//         key={movie.id}
+//         src={`${base_url}${
+//           isLargeRow ? movie.poster_path : movie.backdrop_path
+//         }`}
+//         alt={movie.name}
+//       />
+
+//     )
+
+// )}
 
 
 
