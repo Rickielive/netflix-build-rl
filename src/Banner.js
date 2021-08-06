@@ -38,7 +38,7 @@ function Banner() {
         <header className= "banner" 
         style={{
             backgroundSize: "cover",
-            backgroundImage: `url("https://w7.pngwing.com/pngs/275/820/png-transparent-trend-pattern-background-textured-textures-black-texture-poster-banner.png")`,
+            backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie && movie.backdrop_path}")`,
             backgroundPosition: "center center",
         }}>
             <div className="banner__contents"> 
