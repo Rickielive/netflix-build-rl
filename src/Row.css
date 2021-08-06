@@ -15,10 +15,10 @@
 }
 
 .row__poster{
-    max-height: 130px;
+    max-height: 200px;
     object-fit: contain;
     margin-right: 10px;
-    width: 100px;
+    width: 130px;
     transition:transform 450ms ;
 
 }
