@@ -1,10 +1,10 @@
 .signupScreen{
     display: center; 
     max-width: 300px; 
-    padding: 70px;
-    margin: auto;
-    /* margin-left: auto;
-    margin-right: auto; */
+    padding: 60px;
+    /* margin: auto; */
+    margin-left: auto;
+    margin-right: auto;
     background: rgba(0,0,0,0.85);
     /* float: none !important;
     right: 20px; */
@@ -39,7 +39,7 @@
 
 .signupScreen > form> h1{
     text-align: left;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .signupScreen > form> h4{

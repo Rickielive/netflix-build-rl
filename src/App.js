@@ -6,9 +6,12 @@ import { auth } from './firebase';
 // using ES6 modules
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoginScreen from './Screens/LoginScreen';
+import { useDispatch } from 'react-redux';
+import { login, logout } from './features/userSlice';
 
 function App() {
 const user = null;
+const dispatch = useDispatch();
 
 
 useEffect(() => {
@@ -16,7 +19,14 @@ useEffect(() => {
     if (userAuth) {
       //logged in
       console.log(userAuth)
+      dispatch(
+        login({
+        uid: userAuth.uid,
+        email: userAuth.email
+      })
+      )
     } else  {
+      dispatch(logout);
       //logged out
   }
 })
