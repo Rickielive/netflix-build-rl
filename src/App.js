@@ -2,19 +2,20 @@ import React, { useEffect } from 'react';
 import './App.css';
 import HomeScreen from './Screens/HomeScreen.js';
 import { auth } from './firebase';
-
-// using ES6 modules
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import {Router, Route, Switch, withRouter } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import LoginScreen from './Screens/LoginScreen';
-import { useDispatch } from 'react-redux';
-import { login, logout } from './features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, selectUser } from './features/userSlice';
+import ProfileScreen from './Screens/ProfileScreen';
 
 function App() {
-const user = null;
+const user = useSelector(selectUser);
 const dispatch = useDispatch();
 
 
 useEffect(() => {
+  
   const unsubscribe = auth.onAuthStateChanged(userAuth => {
     if (userAuth) {
       //logged in
@@ -26,12 +27,25 @@ useEffect(() => {
       })
       )
     } else  {
-      dispatch(logout);
+      dispatch(logout());
       //logged out
   }
 })
-  return unsubscribe();
-}, [])
+  return unsubscribe;
+}, [dispatch])
+
+// useEffect(() => {
+//   auth.onAuthStateChanged(userAuth => {
+//     if (userAuth) {
+//       //logged in
+//       console.log(userAuth)
+            
+//           } else  {
+//             //logged out
+//         }
+
+//   })
+// } ,[])
 
 
 
@@ -43,9 +57,15 @@ useEffect(() => {
           <LoginScreen />
         ): (
           <Switch>
-          <Router exact path="/">
+
+            <Route exact path = "/profile">
+              <ProfileScreen />
+            </Route>
+
+            <Router exact path="/">
               <HomeScreen />
             </Router>
+
         </Switch>
         )}
         
@@ -58,10 +78,3 @@ export default App;
 
 
 
-
-{/* <Route path="/about">
-            <About/>
-            </Route>
-            <Router path="/users">
-              <Users/>
-            </Router> */}
